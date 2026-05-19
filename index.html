@@ -36,7 +36,7 @@
       padding: 0 2rem; height: 56px;
     }
     .nav-name { font-family: var(--serif); font-size: 1.15rem; color: var(--navy); text-decoration: none; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links { display: flex; gap: 1.6rem; list-style: none; }
     .nav-links a {
       font-size: 0.875rem; letter-spacing: 0.03em; color: var(--muted);
       text-decoration: none; text-transform: uppercase; transition: color 0.2s;
@@ -81,6 +81,7 @@
     .pill:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
     .pill.navy { background: var(--navy); color: #fff; border-color: var(--navy); }
     .pill.navy:hover { background: var(--navy2); border-color: var(--navy2); }
+    .badge { font-size: 0.73rem; padding: 2px 8px; border-radius: 2px; background: #eef3ff; color: var(--navy2); font-weight: 500; white-space: nowrap; }
 
     /* CV */
     .cv-download {
@@ -95,8 +96,14 @@
     .cv-year { color: var(--muted); font-size: 0.87rem; padding-top: 0.1rem; }
     .cv-item-title { font-weight: 500; color: var(--text); margin-bottom: 0.1rem; }
     .cv-item-sub { color: var(--muted); font-size: 0.875rem; }
-    .refs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.6rem; margin-top: 0.5rem; }
-    .refs-grid a { color: var(--navy2); text-decoration: none; }
+
+    /* REFERENCES */
+    .refs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-top: 0.5rem; }
+    .ref-card { padding: 1.4rem; border: 1px solid var(--border); border-radius: 4px; }
+    .ref-name { font-family: var(--serif); font-size: 1.05rem; color: var(--navy); margin-bottom: 0.3rem; }
+    .ref-detail { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+    .ref-detail a { color: var(--navy2); text-decoration: none; border-bottom: 1px solid var(--border); transition: color 0.2s, border-color 0.2s; }
+    .ref-detail a:hover { color: var(--accent); border-color: var(--accent); }
 
     /* TEACHING */
     .teach-item { padding: 1.1rem 0; border-top: 1px solid var(--border); }
@@ -125,10 +132,11 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#" onclick="showSection('home')"     data-sec="home">Home</a></li>
-      <li><a href="#" onclick="showSection('research')" data-sec="research">Research</a></li>
-      <li><a href="#" onclick="showSection('cv')"       data-sec="cv">CV</a></li>
-      <li><a href="#" onclick="showSection('teaching')" data-sec="teaching">Teaching</a></li>
+      <li><a href="#" onclick="showSection('home')"       data-sec="home">Home</a></li>
+      <li><a href="#" onclick="showSection('research')"   data-sec="research">Research</a></li>
+      <li><a href="#" onclick="showSection('cv')"         data-sec="cv">CV</a></li>
+      <li><a href="#" onclick="showSection('teaching')"   data-sec="teaching">Teaching</a></li>
+      <li><a href="#" onclick="showSection('references')" data-sec="references">References</a></li>
     </ul>
   </div>
 </nav>
@@ -182,42 +190,92 @@
   <div class="sec-rule"></div>
 
   <div class="paper-group">
-    <p class="paper-group-title">Work in Progress</p>
+    <p class="paper-group-title">Job Market Paper</p>
 
     <div class="paper">
-      <div class="paper-title">Heterogeneous Expectations Across Inflation Regimes: Evidence and Implications for Monetary Policy</div>
-      <div class="paper-meta">With Francisco Luna</div>
+      <div class="paper-title">Commodity Exporter Status and Sudden Stops</div>
+      <div class="paper-meta"><span class="badge">Job Market Paper</span></div>
       <div class="paper-links">
         <button class="pill" onclick="toggleAbstract(this)">Abstract ↓</button>
       </div>
       <p class="paper-abstract">
-        We study how the ability of different agents to anticipate inflation in the United States
-        varies with the nature of the inflationary shock and the macroeconomic context. We compare
-        the behavior of professional forecasters and households to understand when expectations
-        become more persistent and backward-looking versus when they incorporate forward-looking
-        information more efficiently, with implications for inflation persistence and the
-        transmission of monetary policy.
+        This paper studies whether commodity exporter status helps explain why sudden stops are more
+        severe in some economies than in others. Using a panel of advanced and emerging economies,
+        I show that the most robust difference between commodity exporters and non-commodity exporters
+        is the size of the external adjustment during sudden stops. In the main local projection
+        difference-in-differences specification, commodity exporters experience current account
+        reversals about 112 percent larger than non-commodity exporters one year after sudden stop
+        onset, and the reversal premium is persistent across three full years after onset.
+        Consumption, investment, and stock prices also fall significantly more in commodity exporters,
+        with effects persistent across all post-crisis horizons. To explain these facts, I extend the
+        Fisherian sudden stop framework of Bianchi (2011) by introducing commodity prices into
+        tradable income. A decline in commodity prices reduces tradable income and collateral values,
+        tightening borrowing constraints and amplifying crises through Fisherian deflation, especially
+        in economies with larger commodity exposure. Calibrating the model to Chile and to a moderate
+        commodity exporter benchmark, I show that this mechanism generates the observed ordering of
+        crisis severity and accounts for a large share of the CE/NCE differential in current account
+        reversals and consumption losses. The model also implies substantially larger welfare gains
+        from macroprudential policy in commodity exporting economies, providing a rationale for
+        stronger precautionary buffers in commodity-dependent economies.
+      </p>
+    </div>
+  </div>
+
+  <div class="paper-group">
+    <p class="paper-group-title">Work in Progress</p>
+
+    <div class="paper">
+      <div class="paper-title">Heterogeneous Expectations Across Inflation Regimes: Evidence and Implications for Monetary Policy</div>
+      <div class="paper-meta">With Facundo Luna</div>
+      <div class="paper-links">
+        <button class="pill" onclick="toggleAbstract(this)">Abstract ↓</button>
+      </div>
+      <p class="paper-abstract">
+        This paper shows that the accuracy and behavior of U.S. inflation expectations depend
+        critically on whether inflation is driven by demand or supply shocks. Combining one-year-ahead
+        expectations from the SPF, Michigan Survey, and Cleveland Fed with Shapiro's (2024)
+        decomposition, we find a reversal in forecast rankings: consumers forecast CPI inflation more
+        accurately than experts in demand-driven episodes, while professional and market-based
+        expectations dominate in supply-driven episodes. Forecast inefficiencies and error persistence
+        are also regime-specific. A simple New Keynesian noisy-information framework with divine
+        coincidence in demand regimes and its breakdown in supply regimes rationalizes these patterns
+        and their policy implications. A state-dependent Taylor rule which conditions on the prevailing
+        demand–supply mix can reduce welfare losses by around 20 percent, highlighting the monetary
+        policy gains from treating expectations as regime-contingent rather than uniform.
       </p>
     </div>
 
     <div class="paper">
-      <div class="paper-title">Commodity Exporter Status and Sudden Stops</div>
-      <div class="paper-meta">Solo</div>
-    </div>
-
-    <div class="paper">
       <div class="paper-title">Transportation Cost Heterogeneity: New Results for International Trade?</div>
-      <div class="paper-meta">Solo</div>
+      <div class="paper-links">
+        <button class="pill" onclick="toggleAbstract(this)">Abstract ↓</button>
+      </div>
+      <p class="paper-abstract">
+        This paper introduces iceberg transportation costs that depend on firm productivity into a
+        model of international trade with monopolistic competition, firm-level heterogeneity, and
+        both constant and variable markups, following the framework of Arkolakis et al. (2019).
+        Using shipment-level customs data from Chile, I show that larger firms face systematically
+        lower trade costs: a 1% increase in a firm's total imports is associated with a 0.4–0.6
+        percentage point decline in its iceberg transport cost, measured as freight over CIF. This
+        evidence challenges the standard assumption that trade costs are uniform across firms within
+        a given origin-destination pair. I incorporate a productivity-dependent iceberg cost into
+        the model and show that it strengthens the selection effect, raising the productivity cutoff
+        for exporting and improving the fit to observed patterns of firm participation and the
+        distribution of export sales. In a counterfactual exercise with a 25% increase in U.S.
+        tariffs, the model with heterogeneous trade costs predicts smaller declines in aggregate
+        exports and in the fraction of exporters than a benchmark with constant iceberg costs, but
+        larger welfare losses, as trade becomes more concentrated in a small set of high-markup
+        firms. These results suggest that ignoring firm-level heterogeneity in transportation costs
+        can bias quantitative assessments of trade policy.
+      </p>
     </div>
 
     <div class="paper">
       <div class="paper-title">Real Business Cycles: The Role of the Commodity Sector</div>
-      <div class="paper-meta">Solo</div>
     </div>
 
     <div class="paper">
       <div class="paper-title">Commodity Exporters and Consumption Volatility: Unraveling Patterns Across Developed and Developing Economies</div>
-      <div class="paper-meta">Solo</div>
     </div>
   </div>
 
@@ -380,44 +438,6 @@
       <div><div class="cv-item-title">Matlab, Stata, R, Dynare, SAS, E-Views, Bloomberg, LaTeX</div></div>
     </div>
   </div>
-
-  <div class="cv-section">
-    <div class="cv-section-title">References</div>
-    <div class="refs-grid">
-      <div>
-        <div class="cv-item-title">Roberto Chang</div>
-        <div class="cv-item-sub">Distinguished Professor<br>Rutgers University<br>
-          <a href="mailto:chang@economics.rutgers.edu">chang@economics.rutgers.edu</a>
-        </div>
-      </div>
-      <div>
-        <div class="cv-item-title">Todd Keister</div>
-        <div class="cv-item-sub">Professor, Rutgers University<br>
-          Financial Research Advisor, Federal Reserve Bank of New York<br>
-          <a href="mailto:todd.keister@rutgers.edu">todd.keister@rutgers.edu</a>
-        </div>
-      </div>
-      <div>
-        <div class="cv-item-title">Carlos Esquivel</div>
-        <div class="cv-item-sub">Assistant Professor<br>Rutgers University<br>
-          <a href="mailto:ce265@economics.rutgers.edu">ce265@economics.rutgers.edu</a>
-        </div>
-      </div>
-      <div>
-        <div class="cv-item-title">Alberto Naudon</div>
-        <div class="cv-item-sub">Board Member<br>Central Bank of Chile<br>
-          <a href="mailto:anaudon@bcentral.cl">anaudon@bcentral.cl</a>
-        </div>
-      </div>
-      <div>
-        <div class="cv-item-title">David Kohn</div>
-        <div class="cv-item-sub">Associate Professor, PUC Chile<br>
-          Head, Big Data Analytics, Central Bank of Chile<br>
-          <a href="mailto:davidkohn@uc.cl">davidkohn@uc.cl</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- TEACHING -->
@@ -474,6 +494,41 @@
     <div class="teach-item">
       <div class="teach-title">Macroeconomics I &amp; II</div>
       <div class="teach-meta">Pontificia Universidad Cat&#243;lica de Chile &middot; 2014 &middot; 2015 &middot; 2016</div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section id="references">
+  <h2 class="sec-title">References</h2>
+  <div class="sec-rule"></div>
+
+  <div class="refs-grid">
+    <div class="ref-card">
+      <div class="ref-name">Roberto Chang</div>
+      <div class="ref-detail">
+        Distinguished Professor<br>
+        Department of Economics, Rutgers University<br>
+        <a href="mailto:chang@economics.rutgers.edu">chang@economics.rutgers.edu</a>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-name">Todd Keister</div>
+      <div class="ref-detail">
+        Professor of Economics, Rutgers University<br>
+        Financial Research Advisor,<br>Federal Reserve Bank of New York<br>
+        <a href="mailto:todd.keister@rutgers.edu">todd.keister@rutgers.edu</a>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-name">Carlos Esquivel</div>
+      <div class="ref-detail">
+        Assistant Professor<br>
+        Department of Economics, Rutgers University<br>
+        <a href="mailto:ce265@economics.rutgers.edu">ce265@economics.rutgers.edu</a>
+      </div>
     </div>
   </div>
 </section>
