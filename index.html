@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fernando Letelier — Economics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1a2744;
+      --navy2:  #2e3f6e;
+      --accent: #b5966d;
+      --bg:     #fafaf8;
+      --bg2:    #f2f1ec;
+      --text:   #1e1e1e;
+      --muted:  #5a5a55;
+      --border: #dddbd4;
+      --serif:  'EB Garamond', Georgia, serif;
+      --sans:   'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.7; }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bg); border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 860px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 56px;
+    }
+    .nav-name { font-family: var(--serif); font-size: 1.15rem; color: var(--navy); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.875rem; letter-spacing: 0.03em; color: var(--muted);
+      text-decoration: none; text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--navy); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--navy); margin: 5px 0; }
+
+    section { max-width: 860px; margin: 0 auto; padding: 5rem 2rem; display: none; }
+    section.active { display: block; }
+
+    /* HOME */
+    .home-grid { display: grid; grid-template-columns: 210px 1fr; gap: 3.5rem; align-items: start; }
+    .photo-placeholder {
+      width: 100%; aspect-ratio: 3/4; background: var(--bg2); border-radius: 4px;
+      border: 1px dashed var(--border); display: flex; flex-direction: column;
+      align-items: center; justify-content: center; color: var(--muted); font-size: 0.85rem; gap: 8px;
+    }
+    .photo-placeholder svg { opacity: 0.35; }
+    .photo-wrap img { width: 100%; border-radius: 4px; border: 1px solid var(--border); display: block; }
+    .home-text h1 { font-family: var(--serif); font-size: 2.2rem; font-weight: 400; color: var(--navy); line-height: 1.2; margin-bottom: 0.3rem; }
+    .home-text .title-line { font-size: 0.88rem; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 1.6rem; }
+    .home-text p { color: #3a3a36; margin-bottom: 1rem; }
+    .contact-block { margin-top: 1.4rem; }
+    .contact-block p { font-size: 0.93rem; margin-bottom: 0.45rem; color: var(--muted); }
+    .contact-block a { color: var(--navy2); text-decoration: none; border-bottom: 1px solid var(--border); transition: color 0.2s, border-color 0.2s; }
+    .contact-block a:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* SECTION HEADINGS */
+    .sec-title { font-family: var(--serif); font-size: 1.7rem; font-weight: 400; color: var(--navy); margin-bottom: 0.3rem; }
+    .sec-rule { width: 40px; height: 2px; background: var(--accent); margin-bottom: 2.5rem; }
+
+    /* RESEARCH */
+    .paper-group { margin-bottom: 3rem; }
+    .paper-group-title { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; }
+    .paper { padding: 1.4rem 0; border-top: 1px solid var(--border); }
+    .paper:last-child { border-bottom: 1px solid var(--border); }
+    .paper-title { font-family: var(--serif); font-size: 1.1rem; color: var(--navy); margin-bottom: 0.3rem; }
+    .paper-meta { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.5rem; }
+    .paper-abstract { font-size: 0.93rem; color: #4a4a45; line-height: 1.65; margin-top: 0.6rem; display: none; }
+    .paper-abstract.open { display: block; }
+    .paper-links { display: flex; gap: 0.7rem; margin-top: 0.6rem; flex-wrap: wrap; align-items: center; }
+    .pill {
+      font-size: 0.78rem; padding: 3px 10px; border-radius: 2px;
+      border: 1px solid var(--border); color: var(--muted); text-decoration: none;
+      cursor: pointer; background: transparent; transition: background 0.15s, color 0.15s, border-color 0.15s; font-family: var(--sans);
+    }
+    .pill:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .pill.navy { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .pill.navy:hover { background: var(--navy2); border-color: var(--navy2); }
+
+    /* CV */
+    .cv-download {
+      display: inline-flex; align-items: center; gap: 8px; padding: 0.6rem 1.2rem;
+      border: 1px solid var(--navy); color: var(--navy); text-decoration: none;
+      font-size: 0.9rem; border-radius: 2px; margin-bottom: 3rem; transition: background 0.2s, color 0.2s;
+    }
+    .cv-download:hover { background: var(--navy); color: #fff; }
+    .cv-section { margin-bottom: 2.8rem; }
+    .cv-section-title { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+    .cv-row { display: grid; grid-template-columns: 130px 1fr; gap: 1rem; margin-bottom: 1.1rem; font-size: 0.95rem; }
+    .cv-year { color: var(--muted); font-size: 0.87rem; padding-top: 0.1rem; }
+    .cv-item-title { font-weight: 500; color: var(--text); margin-bottom: 0.1rem; }
+    .cv-item-sub { color: var(--muted); font-size: 0.875rem; }
+    .refs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.6rem; margin-top: 0.5rem; }
+    .refs-grid a { color: var(--navy2); text-decoration: none; }
+
+    /* TEACHING */
+    .teach-item { padding: 1.1rem 0; border-top: 1px solid var(--border); }
+    .teach-item:last-child { border-bottom: 1px solid var(--border); }
+    .teach-title { font-family: var(--serif); font-size: 1.05rem; color: var(--navy); }
+    .teach-meta { font-size: 0.88rem; color: var(--muted); margin-top: 0.15rem; }
+
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border); }
+
+    @media (max-width: 640px) {
+      .home-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .photo-placeholder { max-width: 180px; aspect-ratio: 1/1; }
+      .cv-row { grid-template-columns: 90px 1fr; }
+      .hamburger { display: block; }
+      .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 56px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 0.5rem 0; }
+      .nav-links.open { display: flex; }
+      .nav-links li a { display: block; padding: 0.6rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-name" onclick="showSection('home')">Fernando Letelier</a>
+    <button class="hamburger" id="burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" onclick="showSection('home')"     data-sec="home">Home</a></li>
+      <li><a href="#" onclick="showSection('research')" data-sec="research">Research</a></li>
+      <li><a href="#" onclick="showSection('cv')"       data-sec="cv">CV</a></li>
+      <li><a href="#" onclick="showSection('teaching')" data-sec="teaching">Teaching</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="active">
+  <div class="home-grid">
+    <div class="photo-wrap">
+      <!-- PHOTO INSTRUCTIONS:
+           Save your headshot as photo.jpg in the same folder as this file,
+           then replace the div below with: <img src="photo.jpg" alt="Fernando Letelier" /> -->
+      <div class="photo-placeholder">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+        <span>Add your photo</span>
+      </div>
+    </div>
+
+    <div class="home-text">
+      <h1>Fernando Letelier</h1>
+      <p class="title-line">Ph.D. Candidate in Economics &middot; Rutgers University</p>
+
+      <p>
+        Welcome! I am a Ph.D. candidate in Economics at Rutgers University.
+        My research lies at the intersection of <strong>international macroeconomics</strong>
+        and <strong>international trade</strong>, with a unifying focus on how different forms
+        of heterogeneity alter shock transmission, aggregate dynamics, and policy implications
+        in open and emerging economies.
+      </p>
+      <p>
+        My dissertation spans three interconnected areas: firm productivity heterogeneity and
+        its implications for international transportation costs and trade outcomes; heterogeneity
+        in inflation shocks and how different agents form inflation expectations; and cross-country
+        heterogeneity in production structures — commodity exporters versus non-commodity exporters
+        — and the resulting differences in business cycle dynamics and sudden stop severity.
+      </p>
+      <p>
+        I am on the economics job market in 2025–2026 and will be available for
+        interviews at the ASSA Annual Meetings in January 2026.
+      </p>
+
+      <div class="contact-block">
+        <p>&#9993;&ensp;<a href="mailto:fal49@economics.rutgers.edu">fal49@economics.rutgers.edu</a></p>
+        <p>&#128222;&ensp;<a href="tel:+19173024314">+1 (917) 302-4314</a></p>
+        <p>&#128196;&ensp;<a href="cv.pdf" target="_blank">Curriculum Vitae (PDF)</a></p>
+        <p>&#127963;&ensp;Department of Economics, Rutgers University<br>
+          &emsp;75 Hamilton St, New Brunswick, NJ 08901</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <h2 class="sec-title">Research</h2>
+  <div class="sec-rule"></div>
+
+  <div class="paper-group">
+    <p class="paper-group-title">Work in Progress</p>
+
+    <div class="paper">
+      <div class="paper-title">Heterogeneous Expectations Across Inflation Regimes: Evidence and Implications for Monetary Policy</div>
+      <div class="paper-meta">With Francisco Luna</div>
+      <div class="paper-links">
+        <button class="pill" onclick="toggleAbstract(this)">Abstract ↓</button>
+      </div>
+      <p class="paper-abstract">
+        We study how the ability of different agents to anticipate inflation in the United States
+        varies with the nature of the inflationary shock and the macroeconomic context. We compare
+        the behavior of professional forecasters and households to understand when expectations
+        become more persistent and backward-looking versus when they incorporate forward-looking
+        information more efficiently, with implications for inflation persistence and the
+        transmission of monetary policy.
+      </p>
+    </div>
+
+    <div class="paper">
+      <div class="paper-title">Commodity Exporter Status and Sudden Stops</div>
+      <div class="paper-meta">Solo</div>
+    </div>
+
+    <div class="paper">
+      <div class="paper-title">Transportation Cost Heterogeneity: New Results for International Trade?</div>
+      <div class="paper-meta">Solo</div>
+    </div>
+
+    <div class="paper">
+      <div class="paper-title">Real Business Cycles: The Role of the Commodity Sector</div>
+      <div class="paper-meta">Solo</div>
+    </div>
+
+    <div class="paper">
+      <div class="paper-title">Commodity Exporters and Consumption Volatility: Unraveling Patterns Across Developed and Developing Economies</div>
+      <div class="paper-meta">Solo</div>
+    </div>
+  </div>
+
+  <div class="paper-group">
+    <p class="paper-group-title">Working Papers</p>
+
+    <div class="paper">
+      <div class="paper-title">Commodities Fundamental Model</div>
+      <div class="paper-meta">With Francisco A. Marioli &middot; Working Paper No. 918, Central Bank of Chile &middot; 2021</div>
+      <div class="paper-links">
+        <a href="https://www.bcentral.cl/en/web/banco-central/content/-/details/working-paper-n-918" class="pill navy" target="_blank">Central Bank of Chile &#8599;</a>
+      </div>
+    </div>
+
+    <div class="paper">
+      <div class="paper-title">Efectos del Gasto P&#250;blico y de su Composici&#243;n en el Crecimiento Econ&#243;mico</div>
+      <div class="paper-meta">Pontificia Universidad Cat&#243;lica de Chile &middot; 2016</div>
+    </div>
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv">
+  <h2 class="sec-title">Curriculum Vitae</h2>
+  <div class="sec-rule"></div>
+
+  <a href="cv.pdf" class="cv-download" target="_blank">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+    Download Full CV (PDF)
+  </a>
+
+  <div class="cv-section">
+    <div class="cv-section-title">Education</div>
+    <div class="cv-row">
+      <div class="cv-year">2021&ndash;2027 (exp.)</div>
+      <div>
+        <div class="cv-item-title">Ph.D. in Economics &mdash; Rutgers University</div>
+        <div class="cv-item-sub">Primary field: International Macroeconomics &nbsp;&middot;&nbsp; Secondary field: International Trade</div>
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">2024</div>
+      <div><div class="cv-item-title">M.A. in Economics &mdash; Rutgers University</div></div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">2015&ndash;2016</div>
+      <div><div class="cv-item-title">M.A. in Economics &mdash; Pontificia Universidad Cat&#243;lica de Chile</div></div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">2011&ndash;2015</div>
+      <div><div class="cv-item-title">B.A. in Business and Economics &mdash; Pontificia Universidad Cat&#243;lica de Chile</div></div>
+    </div>
+  </div>
+
+  <div class="cv-section">
+    <div class="cv-section-title">Pre-Doctoral Employment</div>
+    <div class="cv-row">
+      <div class="cv-year">2019&ndash;2021</div>
+      <div>
+        <div class="cv-item-title">Economic Analyst &mdash; Central Bank of Chile</div>
+        <div class="cv-item-sub">International Analysis Department</div>
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">2017&ndash;2019</div>
+      <div>
+        <div class="cv-item-title">Economic Analyst &mdash; Central Bank of Chile</div>
+        <div class="cv-item-sub">Macroeconomics Statistics Department</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cv-section">
+    <div class="cv-section-title">Research Assistance</div>
+    <div class="cv-row">
+      <div class="cv-year">Fall 2024</div>
+      <div>
+        <div class="cv-item-title">Research Assistant &mdash; Prof. Carlos Esquivel</div>
+        <div class="cv-item-sub">Rutgers University</div>
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">Fall 2022</div>
+      <div>
+        <div class="cv-item-title">Research Assistant &mdash; Prof. Carlos Esquivel</div>
+        <div class="cv-item-sub">Rutgers University</div>
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">2020&ndash;2021</div>
+      <div>
+        <div class="cv-item-title">Research Assistant &mdash; Prof. David Kohn</div>
+        <div class="cv-item-sub">Pontificia Universidad Cat&#243;lica de Chile</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cv-section">
+    <div class="cv-section-title">Grants, Awards &amp; Honors</div>
+    <div class="cv-row">
+      <div class="cv-year">2021&ndash;2026</div>
+      <div>
+        <div class="cv-item-title">Ph.D. Fellowship</div>
+        <div class="cv-item-sub">Department of Economics, Rutgers University</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cv-section">
+    <div class="cv-section-title">Conference Presentations</div>
+    <div class="cv-row">
+      <div class="cv-year">Feb. 2026</div>
+      <div>
+        <div class="cv-item-title">18th FIW-Research Conference &ldquo;International Economics&rdquo;</div>
+        <div class="cv-item-sub">Vienna University of Economics and Business (WU Vienna)</div>
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">Oct. 2025</div>
+      <div>
+        <div class="cv-item-title">Annual Meetings, Missouri Valley Economic Association</div>
+        <div class="cv-item-sub">Kansas City</div>
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">Jul. 2025</div>
+      <div>
+        <div class="cv-item-title">31st International Conference on Computing in Economics and Finance (CEF 2025)</div>
+        <div class="cv-item-sub">University of Chile</div>
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">Apr. 2025</div>
+      <div>
+        <div class="cv-item-title">1st Graduate Student Mini Conference</div>
+        <div class="cv-item-sub">Rutgers University</div>
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">Jun. 2023</div>
+      <div>
+        <div class="cv-item-title">1st Summer School in International Economics</div>
+        <div class="cv-item-sub">Journal of International Economics</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cv-section">
+    <div class="cv-section-title">Skills</div>
+    <div class="cv-row">
+      <div class="cv-year">Languages</div>
+      <div><div class="cv-item-title">English (fluent), Spanish (native)</div></div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">Computing</div>
+      <div><div class="cv-item-title">Matlab, Stata, R, Dynare, SAS, E-Views, Bloomberg, LaTeX</div></div>
+    </div>
+  </div>
+
+  <div class="cv-section">
+    <div class="cv-section-title">References</div>
+    <div class="refs-grid">
+      <div>
+        <div class="cv-item-title">Roberto Chang</div>
+        <div class="cv-item-sub">Distinguished Professor<br>Rutgers University<br>
+          <a href="mailto:chang@economics.rutgers.edu">chang@economics.rutgers.edu</a>
+        </div>
+      </div>
+      <div>
+        <div class="cv-item-title">Todd Keister</div>
+        <div class="cv-item-sub">Professor, Rutgers University<br>
+          Financial Research Advisor, Federal Reserve Bank of New York<br>
+          <a href="mailto:todd.keister@rutgers.edu">todd.keister@rutgers.edu</a>
+        </div>
+      </div>
+      <div>
+        <div class="cv-item-title">Carlos Esquivel</div>
+        <div class="cv-item-sub">Assistant Professor<br>Rutgers University<br>
+          <a href="mailto:ce265@economics.rutgers.edu">ce265@economics.rutgers.edu</a>
+        </div>
+      </div>
+      <div>
+        <div class="cv-item-title">Alberto Naudon</div>
+        <div class="cv-item-sub">Board Member<br>Central Bank of Chile<br>
+          <a href="mailto:anaudon@bcentral.cl">anaudon@bcentral.cl</a>
+        </div>
+      </div>
+      <div>
+        <div class="cv-item-title">David Kohn</div>
+        <div class="cv-item-sub">Associate Professor, PUC Chile<br>
+          Head, Big Data Analytics, Central Bank of Chile<br>
+          <a href="mailto:davidkohn@uc.cl">davidkohn@uc.cl</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING -->
+<section id="teaching">
+  <h2 class="sec-title">Teaching</h2>
+  <div class="sec-rule"></div>
+
+  <div class="paper-group">
+    <p class="paper-group-title">Rutgers University &mdash; Teaching Assistant</p>
+    <div class="teach-item">
+      <div class="teach-title">Advanced Macroeconomics</div>
+      <div class="teach-meta">Spring 2026 &middot; Spring 2023</div>
+    </div>
+    <div class="teach-item">
+      <div class="teach-title">International Finance and Macroeconomics</div>
+      <div class="teach-meta">Spring 2026 &middot; Spring 2023</div>
+    </div>
+    <div class="teach-item">
+      <div class="teach-title">Intermediate Macroeconomics</div>
+      <div class="teach-meta">Fall 2025 &middot; Spring 2025 &middot; Fall 2024</div>
+    </div>
+    <div class="teach-item">
+      <div class="teach-title">Computational Methods for Economics</div>
+      <div class="teach-meta">Fall 2025 &middot; Fall 2023</div>
+    </div>
+    <div class="teach-item">
+      <div class="teach-title">Economics of Uncertainty</div>
+      <div class="teach-meta">Spring 2024</div>
+    </div>
+    <div class="teach-item">
+      <div class="teach-title">Development Economics</div>
+      <div class="teach-meta">Fall 2022</div>
+    </div>
+    <div class="teach-item">
+      <div class="teach-title">Population Economics</div>
+      <div class="teach-meta">Fall 2022</div>
+    </div>
+  </div>
+
+  <div class="paper-group">
+    <p class="paper-group-title">Prior to Doctoral Studies &mdash; Teaching Assistant</p>
+    <div class="teach-item">
+      <div class="teach-title">Macroeconomics Theory</div>
+      <div class="teach-meta">Universidad de los Andes &middot; 2019 &middot; 2020</div>
+    </div>
+    <div class="teach-item">
+      <div class="teach-title">International Macroeconomics</div>
+      <div class="teach-meta">Pontificia Universidad Cat&#243;lica de Chile &middot; 2019 &middot; 2020</div>
+    </div>
+    <div class="teach-item">
+      <div class="teach-title">Introduction to Macroeconomics</div>
+      <div class="teach-meta">Pontificia Universidad Cat&#243;lica de Chile &middot; 2015 &middot; 2016</div>
+    </div>
+    <div class="teach-item">
+      <div class="teach-title">Macroeconomics I &amp; II</div>
+      <div class="teach-meta">Pontificia Universidad Cat&#243;lica de Chile &middot; 2014 &middot; 2015 &middot; 2016</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Fernando Letelier &middot; Department of Economics &middot; Rutgers University &middot; New Brunswick, NJ</p>
+  <p style="margin-top:4px;">Last updated: May 2025</p>
+</footer>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.dataset.sec === id));
+    document.getElementById('navLinks').classList.remove('open');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return false;
+  }
+  function toggleAbstract(btn) {
+    const abs = btn.closest('.paper').querySelector('.paper-abstract');
+    const open = abs.classList.toggle('open');
+    btn.textContent = open ? 'Abstract ↑' : 'Abstract ↓';
+  }
+  document.getElementById('burger').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.querySelector('[data-sec="home"]').classList.add('active');
+</script>
+</body>
+</html>
