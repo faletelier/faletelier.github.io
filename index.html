@@ -23,6 +23,7 @@
   />
 
   <style>
+
     *,
     *::before,
     *::after {
@@ -56,6 +57,7 @@
       font-size: 16px;
       line-height: 1.7;
     }
+
 
     /* NAVIGATION */
 
@@ -120,6 +122,7 @@
       margin: 5px 0;
     }
 
+
     /* GENERAL SECTIONS */
 
     section {
@@ -147,6 +150,7 @@
       background: var(--accent);
       margin-bottom: 2.5rem;
     }
+
 
     /* HOME */
 
@@ -191,10 +195,18 @@
       margin-top: 0.55rem;
     }
 
+    /* Main home-page paragraphs justified */
+
     .home-text > p {
       color: #3a3a36;
       margin-bottom: 1rem;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
     }
+
+
+    /* HOME BUTTONS */
 
     .contact-links {
       display: flex;
@@ -206,22 +218,30 @@
     .contact-link {
       display: inline-block;
       font-size: 0.84rem;
-      padding: 5px 12px;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      color: var(--navy2);
+      font-weight: 600;
+      padding: 7px 15px;
+
+      border: 1px solid var(--navy);
+      border-radius: 3px;
+
+      background: var(--navy);
+      color: #000000;
+
       text-decoration: none;
+
       transition:
         background 0.15s,
-        color 0.15s,
-        border-color 0.15s;
+        border-color 0.15s,
+        transform 0.15s;
     }
 
     .contact-link:hover {
-      background: var(--navy);
-      color: white;
-      border-color: var(--navy);
+      background: var(--navy2);
+      border-color: var(--navy2);
+      color: #000000;
+      transform: translateY(-1px);
     }
+
 
     /* RESEARCH */
 
@@ -290,10 +310,12 @@
       text-decoration: none;
       cursor: pointer;
       background: transparent;
+
       transition:
         background 0.15s,
         color 0.15s,
         border-color 0.15s;
+
       font-family: var(--sans);
     }
 
@@ -324,6 +346,7 @@
       white-space: nowrap;
     }
 
+
     /* CV */
 
     .cv-download {
@@ -337,6 +360,7 @@
       font-size: 0.9rem;
       border-radius: 2px;
       margin-bottom: 3rem;
+
       transition:
         background 0.2s,
         color 0.2s;
@@ -387,6 +411,7 @@
       font-size: 0.875rem;
     }
 
+
     /* TEACHING */
 
     .teach-item {
@@ -409,6 +434,7 @@
       color: var(--muted);
       margin-top: 0.15rem;
     }
+
 
     /* REFERENCES */
 
@@ -444,6 +470,7 @@
       border-bottom: 1px solid var(--border);
     }
 
+
     /* FOOTER */
 
     footer {
@@ -454,9 +481,11 @@
       border-top: 1px solid var(--border);
     }
 
-    /* MOBILE */
+
+    /* MOBILE DISPLAY */
 
     @media (max-width: 640px) {
+
       .home-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -478,10 +507,12 @@
         display: none;
         flex-direction: column;
         gap: 0;
+
         position: absolute;
         top: 56px;
         left: 0;
         right: 0;
+
         background: var(--bg);
         border-bottom: 1px solid var(--border);
         padding: 0.5rem 0;
@@ -496,33 +527,71 @@
         padding: 0.6rem 2rem;
       }
     }
+
   </style>
 </head>
 
+
 <body>
 
+
+<!-- NAVIGATION -->
+
 <nav>
+
   <div class="nav-inner">
 
     <a href="#home" class="nav-name">
       Fernando Letelier
     </a>
 
-    <button class="hamburger" id="burger" aria-label="Toggle menu">
+    <button
+      class="hamburger"
+      id="burger"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
       <span></span>
       <span></span>
       <span></span>
     </button>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="#home" data-sec="home">Home</a></li>
-      <li><a href="#research" data-sec="research">Research</a></li>
-      <li><a href="#cv" data-sec="cv">CV</a></li>
-      <li><a href="#teaching" data-sec="teaching">Teaching</a></li>
-      <li><a href="#references" data-sec="references">References</a></li>
+
+      <li>
+        <a href="#home" data-sec="home">
+          Home
+        </a>
+      </li>
+
+      <li>
+        <a href="#research" data-sec="research">
+          Research
+        </a>
+      </li>
+
+      <li>
+        <a href="#cv" data-sec="cv">
+          CV
+        </a>
+      </li>
+
+      <li>
+        <a href="#teaching" data-sec="teaching">
+          Teaching
+        </a>
+      </li>
+
+      <li>
+        <a href="#references" data-sec="references">
+          References
+        </a>
+      </li>
+
     </ul>
 
   </div>
+
 </nav>
 
 
@@ -533,17 +602,28 @@
   <div class="home-grid">
 
     <div class="photo-wrap">
-      <img src="photo.jpg" alt="Fernando Letelier" />
+
+      <img
+        src="photo.jpg"
+        alt="Fernando Letelier"
+      />
+
     </div>
+
 
     <div class="home-text">
 
-      <h1>Fernando Letelier</h1>
+      <h1>
+        Fernando Letelier
+      </h1>
+
 
       <div class="home-meta">
 
         <p>
-          Ph.D. Candidate in Economics &middot; Rutgers University
+          Ph.D. Candidate in Economics
+          &middot;
+          Rutgers University
         </p>
 
         <p>
@@ -551,9 +631,12 @@
         </p>
 
         <p>
-          Fields: International Macroeconomics
-          &middot; International Trade
-          &middot; Monetary Economics
+          Fields:
+          International Macroeconomics
+          &middot;
+          International Trade
+          &middot;
+          Monetary Economics
         </p>
 
         <p class="market-line">
@@ -562,31 +645,43 @@
 
       </div>
 
+
       <p>
         I am a Ph.D. candidate in Economics at Rutgers University.
-        My research is in <strong>international macroeconomics</strong>,
-        with interests in <strong>international trade</strong> and
+        My research is in
+        <strong>international macroeconomics</strong>,
+        with interests in
+        <strong>international trade</strong>
+        and
         <strong>monetary economics</strong>.
-        I study how economic structure and heterogeneity shape the transmission
-        of external shocks and the design of policy in open economies.
+        I study how economic structure and heterogeneity shape the
+        transmission of external shocks and the design of policy in
+        open economies.
       </p>
+
 
       <p>
         My job market paper,
-        <em>Commodity Exposure and the Severity of Sudden Stops</em>,
-        studies how the composition of tradable income shapes financial fragility.
-        I combine cross country evidence from systemic sudden stops with a quantitative
-        Fisherian collateral model to show that greater commodity exposure amplifies
-        crisis severity at a given balance sheet, while also inducing precautionary
+        <em>
+          Commodity Exposure and the Severity of Sudden Stops
+        </em>,
+        studies how the composition of tradable income shapes
+        financial fragility.
+        I combine cross country evidence from systemic sudden stops
+        with a quantitative Fisherian collateral model to show that
+        greater commodity exposure amplifies crisis severity at a
+        given balance sheet, while also inducing precautionary
         borrowing adjustment ex ante.
       </p>
 
+
       <p>
-        My other research studies how commodity exposure affects the informativeness
-        of inflation expectations across open economies, and how firm level
-        heterogeneity in transportation costs shapes trade, selection, and the
-        effects of trade policy.
+        My other research studies how commodity exposure affects the
+        informativeness of inflation expectations across open
+        economies, and how firm level heterogeneity in transportation
+        costs shapes trade, selection, and the effects of trade policy.
       </p>
+
 
       <div class="contact-links">
 
@@ -615,11 +710,15 @@
 </section>
 
 
+
 <!-- RESEARCH -->
 
 <section id="research">
 
-  <h2 class="sec-title">Research</h2>
+  <h2 class="sec-title">
+    Research
+  </h2>
+
   <div class="sec-rule"></div>
 
 
@@ -631,15 +730,20 @@
       Job Market Paper
     </p>
 
+
     <div class="paper">
 
       <div class="paper-title">
         Commodity Exposure and the Severity of Sudden Stops
       </div>
 
+
       <div class="paper-meta">
-        <span class="badge">Job Market Paper</span>
+        <span class="badge">
+          Job Market Paper
+        </span>
       </div>
+
 
       <div class="paper-links">
 
@@ -662,31 +766,38 @@
 
       </div>
 
+
       <p class="paper-abstract">
-        How does the composition of tradable income shape financial fragility during
-        sudden stops? Using the Bianchi and Mendoza (2020) systemic sudden stop
-        chronology, I show that economies entering an episode with greater commodity
-        dependence undergo larger absolute adjustment: moving from the 25th to the
-        75th percentile of pre-crisis exposure is associated with a 2.93 percentage
-        point larger current account reversal one year after onset, alongside larger
-        consumption and equity price losses. I then extend the Fisherian collateral
-        model of Bianchi (2011) by allowing commodity exposure to change the
-        sensitivity of tradable income to a common world price. Holding the inherited
-        balance sheet and shock fixed, moving across the empirically mapped exposure
-        interquartile range raises the current account reversal by 4.88 percentage
-        points. When exposure is anticipated, households borrow less ex ante: on a
-        fixed set of crisis dates, the severity differential peaks at intermediate
-        exposure and falls by 46 percent by α = 0.40. A borrowing rule counterfactual
-        shows that this endogenous adjustment substantially attenuates the exposure
-        gradient. Greater exposure also raises the marginal external cost of leverage
-        at a common balance sheet. Financial fragility therefore depends not only on
-        leverage, but also on the composition of the income backing it and on
-        endogenous balance sheet adjustment.
+        How does the composition of tradable income shape financial
+        fragility during sudden stops? Using the Bianchi and Mendoza
+        (2020) systemic sudden stop chronology, I show that economies
+        entering an episode with greater commodity dependence undergo
+        larger absolute adjustment: moving from the 25th to the 75th
+        percentile of pre-crisis exposure is associated with a 2.93
+        percentage point larger current account reversal one year
+        after onset, alongside larger consumption and equity price
+        losses. I then extend the Fisherian collateral model of
+        Bianchi (2011) by allowing commodity exposure to change the
+        sensitivity of tradable income to a common world price.
+        Holding the inherited balance sheet and shock fixed, moving
+        across the empirically mapped exposure interquartile range
+        raises the current account reversal by 4.88 percentage points.
+        When exposure is anticipated, households borrow less ex ante:
+        on a fixed set of crisis dates, the severity differential
+        peaks at intermediate exposure and falls by 46 percent by
+        α = 0.40. A borrowing rule counterfactual shows that this
+        endogenous adjustment substantially attenuates the exposure
+        gradient. Greater exposure also raises the marginal external
+        cost of leverage at a common balance sheet. Financial
+        fragility therefore depends not only on leverage, but also
+        on the composition of the income backing it and on endogenous
+        balance sheet adjustment.
       </p>
 
     </div>
 
   </div>
+
 
 
   <!-- WORKING PAPERS -->
@@ -698,12 +809,15 @@
     </p>
 
 
+    <!-- PAPER 1 -->
+
     <div class="paper">
 
       <div class="paper-title">
-        Commodity Terms of Trade and the Informativeness of Inflation Expectations
-        in Small Open Economies
+        Commodity Terms of Trade and the Informativeness of
+        Inflation Expectations in Small Open Economies
       </div>
+
 
       <div class="paper-links">
 
@@ -726,33 +840,43 @@
 
       </div>
 
+
       <p class="paper-abstract">
-        What inflation expectations are most informative for central banks in open
-        economies? Using a quarterly panel of twelve open economies from 2000 to 2025,
-        I compare one year ahead inflation expectations from non-expert agents and
-        expert forecasters. Unlike recent U.S. evidence, experts are more accurate in
-        both demand and supply driven inflation episodes. The paper's main result is
-        that this expert advantage declines systematically with commodity terms of
-        trade exposure during global supply episodes. The narrowing reflects lower
-        non-expert forecast errors rather than deteriorating expert performance.
-        Fair–Shiller encompassing regressions further show that the non-expert/expert
-        forecast gap becomes increasingly informative about subsequent inflation as
-        exposure rises, with the incremental information most clearly reflected in
-        future services inflation. Contemporaneous exchange rate movements do not
-        account for the exposure gradient. A parsimonious small open economy New
-        Keynesian model shows that this informational channel, rather than commodity
-        transmission alone, narrows the difference between optimal policy responses
-        across demand and supply regimes.
+        What inflation expectations are most informative for central
+        banks in open economies? Using a quarterly panel of twelve
+        open economies from 2000 to 2025, I compare one year ahead
+        inflation expectations from non-expert agents and expert
+        forecasters. Unlike recent U.S. evidence, experts are more
+        accurate in both demand and supply driven inflation episodes.
+        The paper's main result is that this expert advantage declines
+        systematically with commodity terms of trade exposure during
+        global supply episodes. The narrowing reflects lower
+        non-expert forecast errors rather than deteriorating expert
+        performance. Fair–Shiller encompassing regressions further
+        show that the non-expert/expert forecast gap becomes
+        increasingly informative about subsequent inflation as
+        exposure rises, with the incremental information most clearly
+        reflected in future services inflation. Contemporaneous
+        exchange rate movements do not account for the exposure
+        gradient. A parsimonious small open economy New Keynesian
+        model shows that this informational channel, rather than
+        commodity transmission alone, narrows the difference between
+        optimal policy responses across demand and supply regimes.
       </p>
 
     </div>
 
 
+
+    <!-- PAPER 2 -->
+
     <div class="paper">
 
       <div class="paper-title">
-        Transportation Cost Heterogeneity: New Results for International Trade?
+        Transportation Cost Heterogeneity:
+        New Results for International Trade?
       </div>
+
 
       <div class="paper-links">
 
@@ -775,30 +899,39 @@
 
       </div>
 
+
       <p class="paper-abstract">
-        This paper introduces iceberg transportation costs that depend on firm
-        productivity into a model of international trade with monopolistic competition,
-        firm-level heterogeneity, and both constant and variable markups, following
-        the framework of Arkolakis et al. (2019). Using shipment-level customs data
-        from Chile, I show that larger firms face systematically lower trade costs:
-        a 1% increase in a firm's total imports is associated with a 0.4–0.6 percentage
-        point decline in its iceberg transport cost, measured as freight over CIF.
-        This evidence challenges the standard assumption that trade costs are uniform
-        across firms within a given origin-destination pair. I incorporate a
-        productivity-dependent iceberg cost into the model and show that it strengthens
-        the selection effect, raising the productivity cutoff for exporting and improving
-        the fit to observed patterns of firm participation and the distribution of export
-        sales. In a counterfactual exercise with a 25% increase in U.S. tariffs, the
-        model with heterogeneous trade costs predicts smaller declines in aggregate
-        exports and in the fraction of exporters than a benchmark with constant iceberg
-        costs, but larger welfare losses, as trade becomes more concentrated in a small
-        set of high-markup firms. These results suggest that ignoring firm-level
-        heterogeneity in transportation costs can bias quantitative assessments of
-        trade policy.
+        This paper introduces iceberg transportation costs that depend
+        on firm productivity into a model of international trade with
+        monopolistic competition, firm-level heterogeneity, and both
+        constant and variable markups, following the framework of
+        Arkolakis et al. (2019). Using shipment-level customs data
+        from Chile, I show that larger firms face systematically lower
+        trade costs: a 1% increase in a firm's total imports is
+        associated with a 0.4–0.6 percentage point decline in its
+        iceberg transport cost, measured as freight over CIF. This
+        evidence challenges the standard assumption that trade costs
+        are uniform across firms within a given origin-destination
+        pair. I incorporate a productivity-dependent iceberg cost into
+        the model and show that it strengthens the selection effect,
+        raising the productivity cutoff for exporting and improving
+        the fit to observed patterns of firm participation and the
+        distribution of export sales. In a counterfactual exercise
+        with a 25% increase in U.S. tariffs, the model with
+        heterogeneous trade costs predicts smaller declines in
+        aggregate exports and in the fraction of exporters than a
+        benchmark with constant iceberg costs, but larger welfare
+        losses, as trade becomes more concentrated in a small set of
+        high-markup firms. These results suggest that ignoring
+        firm-level heterogeneity in transportation costs can bias
+        quantitative assessments of trade policy.
       </p>
 
     </div>
 
+
+
+    <!-- PAPER 3 -->
 
     <div class="paper">
 
@@ -807,9 +940,11 @@
         Evidence and Implications for Monetary Policy
       </div>
 
+
       <div class="paper-meta">
         With Facundo Luna
       </div>
+
 
       <div class="paper-links">
 
@@ -832,25 +967,31 @@
 
       </div>
 
+
       <p class="paper-abstract">
-        This paper shows that the accuracy and behavior of U.S. inflation expectations
-        depend critically on whether inflation is driven by demand or supply shocks.
-        Combining one year ahead expectations from the SPF, Michigan Survey, and
-        Cleveland Fed with Shapiro's decomposition, we find a reversal in forecast
-        rankings: consumers forecast CPI inflation more accurately than experts in
-        demand driven episodes, while professional and market based expectations
-        dominate in supply driven episodes. Forecast inefficiencies and error persistence
-        are also regime specific. A simple New Keynesian noisy information framework
-        with divine coincidence in demand regimes and its breakdown in supply regimes
-        rationalizes these patterns and their policy implications. A state dependent
-        Taylor rule which conditions on the prevailing demand/supply mix can reduce
-        welfare losses by around 20 percent, highlighting the monetary policy gains
-        from treating expectations as regime contingent rather than uniform.
+        This paper shows that the accuracy and behavior of U.S.
+        inflation expectations depend critically on whether inflation
+        is driven by demand or supply shocks. Combining one year ahead
+        expectations from the SPF, Michigan Survey, and Cleveland Fed
+        with Shapiro's decomposition, we find a reversal in forecast
+        rankings: consumers forecast CPI inflation more accurately
+        than experts in demand driven episodes, while professional and
+        market based expectations dominate in supply driven episodes.
+        Forecast inefficiencies and error persistence are also regime
+        specific. A simple New Keynesian noisy information framework
+        with divine coincidence in demand regimes and its breakdown in
+        supply regimes rationalizes these patterns and their policy
+        implications. A state dependent Taylor rule which conditions
+        on the prevailing demand/supply mix can reduce welfare losses
+        by around 20 percent, highlighting the monetary policy gains
+        from treating expectations as regime contingent rather than
+        uniform.
       </p>
 
     </div>
 
   </div>
+
 
 
   <!-- WORK IN PROGRESS -->
@@ -861,20 +1002,28 @@
       Work in Progress
     </p>
 
-    <div class="paper">
-      <div class="paper-title">
-        Real Business Cycles: The Role of the Commodity Sector
-      </div>
-    </div>
 
     <div class="paper">
+
+      <div class="paper-title">
+        Real Business Cycles:
+        The Role of the Commodity Sector
+      </div>
+
+    </div>
+
+
+    <div class="paper">
+
       <div class="paper-title">
         Commodity Exporters and Consumption Volatility:
         Unraveling Patterns Across Developed and Developing Economies
       </div>
+
     </div>
 
   </div>
+
 
 
   <!-- PREVIOUS RESEARCH -->
@@ -885,11 +1034,13 @@
       Previous Research
     </p>
 
+
     <div class="paper">
 
       <div class="paper-title">
         Commodities Fundamental Model
       </div>
+
 
       <div class="paper-meta">
         With Francisco A. Marioli
@@ -898,6 +1049,7 @@
         &middot;
         2021
       </div>
+
 
       <div class="paper-links">
 
@@ -914,12 +1066,14 @@
 
     </div>
 
+
     <div class="paper">
 
       <div class="paper-title">
-        Efectos del Gasto P&#250;blico y de su Composici&#243;n en el
-        Crecimiento Econ&#243;mico
+        Efectos del Gasto P&#250;blico y de su Composici&#243;n
+        en el Crecimiento Econ&#243;mico
       </div>
+
 
       <div class="paper-meta">
         Pontificia Universidad Cat&#243;lica de Chile
@@ -934,6 +1088,7 @@
 </section>
 
 
+
 <!-- CV -->
 
 <section id="cv">
@@ -944,12 +1099,14 @@
 
   <div class="sec-rule"></div>
 
+
   <a
     href="cv.pdf"
     class="cv-download"
     target="_blank"
     rel="noopener noreferrer"
   >
+
     <svg
       width="16"
       height="16"
@@ -958,20 +1115,38 @@
       stroke="currentColor"
       stroke-width="2"
     >
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-      <polyline points="7 10 12 15 17 10"/>
-      <line x1="12" y1="15" x2="12" y2="3"/>
+
+      <path
+        d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+      />
+
+      <polyline
+        points="7 10 12 15 17 10"
+      />
+
+      <line
+        x1="12"
+        y1="15"
+        x2="12"
+        y2="3"
+      />
+
     </svg>
 
     Download Full CV (PDF)
+
   </a>
 
+
+
+  <!-- EDUCATION -->
 
   <div class="cv-section">
 
     <div class="cv-section-title">
       Education
     </div>
+
 
     <div class="cv-row">
 
@@ -980,6 +1155,7 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
           Ph.D. in Economics &mdash; Rutgers University
         </div>
@@ -989,6 +1165,7 @@
           &nbsp;&middot;&nbsp;
           Secondary field: International Trade
         </div>
+
       </div>
 
     </div>
@@ -1001,9 +1178,11 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
           M.A. in Economics &mdash; Rutgers University
         </div>
+
       </div>
 
     </div>
@@ -1016,10 +1195,12 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
           M.A. in Economics &mdash;
           Pontificia Universidad Cat&#243;lica de Chile
         </div>
+
       </div>
 
     </div>
@@ -1032,10 +1213,12 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
           B.A. in Business and Economics &mdash;
           Pontificia Universidad Cat&#243;lica de Chile
         </div>
+
       </div>
 
     </div>
@@ -1043,11 +1226,15 @@
   </div>
 
 
+
+  <!-- PROFESSIONAL EXPERIENCE -->
+
   <div class="cv-section">
 
     <div class="cv-section-title">
       Professional Experience
     </div>
+
 
     <div class="cv-row">
 
@@ -1056,6 +1243,7 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
           Visiting Researcher &mdash; Central Bank of Chile
         </div>
@@ -1063,8 +1251,10 @@
         <div class="cv-item-sub">
           Programa de Visitas
           &nbsp;&middot;&nbsp;
-          Monetary Policy Division, International Analysis Department
+          Monetary Policy Division,
+          International Analysis Department
         </div>
+
       </div>
 
     </div>
@@ -1077,6 +1267,7 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
           Economic Analyst &mdash; Central Bank of Chile
         </div>
@@ -1084,6 +1275,7 @@
         <div class="cv-item-sub">
           International Analysis Department
         </div>
+
       </div>
 
     </div>
@@ -1096,6 +1288,7 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
           Economic Analyst &mdash; Central Bank of Chile
         </div>
@@ -1103,6 +1296,7 @@
         <div class="cv-item-sub">
           Macroeconomics Statistics Department
         </div>
+
       </div>
 
     </div>
@@ -1110,11 +1304,15 @@
   </div>
 
 
+
+  <!-- RESEARCH ASSISTANCE -->
+
   <div class="cv-section">
 
     <div class="cv-section-title">
       Research Assistance
     </div>
+
 
     <div class="cv-row">
 
@@ -1123,6 +1321,7 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
           Research Assistant &mdash; Prof. Carlos Esquivel
         </div>
@@ -1130,6 +1329,7 @@
         <div class="cv-item-sub">
           Rutgers University
         </div>
+
       </div>
 
     </div>
@@ -1142,6 +1342,7 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
           Research Assistant &mdash; Prof. Carlos Esquivel
         </div>
@@ -1149,6 +1350,7 @@
         <div class="cv-item-sub">
           Rutgers University
         </div>
+
       </div>
 
     </div>
@@ -1161,6 +1363,7 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
           Research Assistant &mdash; Prof. David Kohn
         </div>
@@ -1168,6 +1371,7 @@
         <div class="cv-item-sub">
           Pontificia Universidad Cat&#243;lica de Chile
         </div>
+
       </div>
 
     </div>
@@ -1175,11 +1379,15 @@
   </div>
 
 
+
+  <!-- AWARDS -->
+
   <div class="cv-section">
 
     <div class="cv-section-title">
       Grants, Awards &amp; Honors
     </div>
+
 
     <div class="cv-row">
 
@@ -1188,6 +1396,7 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
           Ph.D. Fellowship
         </div>
@@ -1195,6 +1404,7 @@
         <div class="cv-item-sub">
           Department of Economics, Rutgers University
         </div>
+
       </div>
 
     </div>
@@ -1202,11 +1412,15 @@
   </div>
 
 
+
+  <!-- CONFERENCES -->
+
   <div class="cv-section">
 
     <div class="cv-section-title">
       Conference Presentations
     </div>
+
 
     <div class="cv-row">
 
@@ -1215,6 +1429,7 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
           41&deg; Jornadas Anuales de Econom&#237;a
         </div>
@@ -1224,6 +1439,7 @@
           &nbsp;&middot;&nbsp;
           Montevideo, Uruguay
         </div>
+
       </div>
 
     </div>
@@ -1236,6 +1452,7 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
           IEA World Congress 2026
         </div>
@@ -1245,6 +1462,7 @@
           &nbsp;&middot;&nbsp;
           Belgrade, Serbia
         </div>
+
       </div>
 
     </div>
@@ -1257,14 +1475,17 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
           18th FIW-Research Conference
           &ldquo;International Economics&rdquo;
         </div>
 
         <div class="cv-item-sub">
-          Vienna University of Economics and Business (WU Vienna)
+          Vienna University of Economics and Business
+          (WU Vienna)
         </div>
+
       </div>
 
     </div>
@@ -1277,13 +1498,16 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
-          Annual Meetings, Missouri Valley Economic Association
+          Annual Meetings,
+          Missouri Valley Economic Association
         </div>
 
         <div class="cv-item-sub">
           Kansas City
         </div>
+
       </div>
 
     </div>
@@ -1296,14 +1520,16 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
-          31st International Conference on Computing in Economics and
-          Finance (CEF 2025)
+          31st International Conference on Computing in Economics
+          and Finance (CEF 2025)
         </div>
 
         <div class="cv-item-sub">
           University of Chile
         </div>
+
       </div>
 
     </div>
@@ -1316,6 +1542,7 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
           1st Graduate Student Mini Conference
         </div>
@@ -1323,6 +1550,7 @@
         <div class="cv-item-sub">
           Rutgers University
         </div>
+
       </div>
 
     </div>
@@ -1335,6 +1563,7 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
           1st Summer School in International Economics
         </div>
@@ -1342,6 +1571,7 @@
         <div class="cv-item-sub">
           Journal of International Economics
         </div>
+
       </div>
 
     </div>
@@ -1349,11 +1579,15 @@
   </div>
 
 
+
+  <!-- SKILLS -->
+
   <div class="cv-section">
 
     <div class="cv-section-title">
       Skills
     </div>
+
 
     <div class="cv-row">
 
@@ -1362,9 +1596,11 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
           English (fluent), Spanish (native)
         </div>
+
       </div>
 
     </div>
@@ -1377,9 +1613,12 @@
       </div>
 
       <div>
+
         <div class="cv-item-title">
-          Matlab, Stata, R, Dynare, SAS, EViews, Bloomberg, LaTeX
+          Matlab, Stata, R, Dynare, SAS, EViews,
+          Bloomberg, LaTeX
         </div>
+
       </div>
 
     </div>
@@ -1387,6 +1626,7 @@
   </div>
 
 </section>
+
 
 
 <!-- TEACHING -->
@@ -1399,76 +1639,116 @@
 
   <div class="sec-rule"></div>
 
+
   <div class="paper-group">
 
     <p class="paper-group-title">
       Rutgers University &mdash; Teaching Assistant
     </p>
 
+
     <div class="teach-item">
+
       <div class="teach-title">
         Advanced Macroeconomics
       </div>
+
       <div class="teach-meta">
-        Spring 2026 &middot; Spring 2023
+        Spring 2026
+        &middot;
+        Spring 2023
       </div>
+
     </div>
 
+
     <div class="teach-item">
+
       <div class="teach-title">
         International Finance and Macroeconomics
       </div>
+
       <div class="teach-meta">
-        Spring 2026 &middot; Spring 2023
+        Spring 2026
+        &middot;
+        Spring 2023
       </div>
+
     </div>
 
+
     <div class="teach-item">
+
       <div class="teach-title">
         Intermediate Macroeconomics
       </div>
+
       <div class="teach-meta">
-        Fall 2025 &middot; Spring 2025 &middot; Fall 2024
+        Fall 2025
+        &middot;
+        Spring 2025
+        &middot;
+        Fall 2024
       </div>
+
     </div>
 
+
     <div class="teach-item">
+
       <div class="teach-title">
         Computational Methods for Economics
       </div>
+
       <div class="teach-meta">
-        Fall 2025 &middot; Fall 2023
+        Fall 2025
+        &middot;
+        Fall 2023
       </div>
+
     </div>
 
+
     <div class="teach-item">
+
       <div class="teach-title">
         Economics of Uncertainty
       </div>
+
       <div class="teach-meta">
         Spring 2024
       </div>
+
     </div>
 
+
     <div class="teach-item">
+
       <div class="teach-title">
         Development Economics
       </div>
+
       <div class="teach-meta">
         Fall 2022
       </div>
+
     </div>
 
+
     <div class="teach-item">
+
       <div class="teach-title">
         Population Economics
       </div>
+
       <div class="teach-meta">
         Fall 2022
       </div>
+
     </div>
 
   </div>
+
 
 
   <div class="paper-group">
@@ -1477,54 +1757,80 @@
       Prior to Doctoral Studies &mdash; Teaching Assistant
     </p>
 
+
     <div class="teach-item">
+
       <div class="teach-title">
         Macroeconomics Theory
       </div>
+
       <div class="teach-meta">
         Universidad de los Andes
-        &middot; 2019
-        &middot; 2020
+        &middot;
+        2019
+        &middot;
+        2020
       </div>
+
     </div>
 
+
     <div class="teach-item">
+
       <div class="teach-title">
         International Macroeconomics
       </div>
+
       <div class="teach-meta">
         Pontificia Universidad Cat&#243;lica de Chile
-        &middot; 2019
-        &middot; 2020
+        &middot;
+        2019
+        &middot;
+        2020
       </div>
+
     </div>
 
+
     <div class="teach-item">
+
       <div class="teach-title">
         Introduction to Macroeconomics
       </div>
+
       <div class="teach-meta">
         Pontificia Universidad Cat&#243;lica de Chile
-        &middot; 2015
-        &middot; 2016
+        &middot;
+        2015
+        &middot;
+        2016
       </div>
+
     </div>
 
+
     <div class="teach-item">
+
       <div class="teach-title">
         Macroeconomics I &amp; II
       </div>
+
       <div class="teach-meta">
         Pontificia Universidad Cat&#243;lica de Chile
-        &middot; 2014
-        &middot; 2015
-        &middot; 2016
+        &middot;
+        2014
+        &middot;
+        2015
+        &middot;
+        2016
       </div>
+
     </div>
 
   </div>
 
 </section>
+
 
 
 <!-- REFERENCES -->
@@ -1537,7 +1843,9 @@
 
   <div class="sec-rule"></div>
 
+
   <div class="refs-grid">
+
 
     <div class="ref-card">
 
@@ -1546,14 +1854,22 @@
       </div>
 
       <div class="ref-detail">
-        Distinguished Professor<br>
-        Department of Economics, Rutgers University<br>
+
+        Distinguished Professor
+        <br>
+
+        Department of Economics,
+        Rutgers University
+        <br>
+
         <a href="mailto:chang@economics.rutgers.edu">
           chang@economics.rutgers.edu
         </a>
+
       </div>
 
     </div>
+
 
 
     <div class="ref-card">
@@ -1563,15 +1879,25 @@
       </div>
 
       <div class="ref-detail">
-        Professor of Economics, Rutgers University<br>
-        Financial Research Advisor,<br>
-        Federal Reserve Bank of New York<br>
+
+        Professor of Economics,
+        Rutgers University
+        <br>
+
+        Financial Research Advisor,
+        <br>
+
+        Federal Reserve Bank of New York
+        <br>
+
         <a href="mailto:todd.keister@rutgers.edu">
           todd.keister@rutgers.edu
         </a>
+
       </div>
 
     </div>
+
 
 
     <div class="ref-card">
@@ -1581,11 +1907,18 @@
       </div>
 
       <div class="ref-detail">
-        Assistant Professor<br>
-        Department of Economics, Rutgers University<br>
+
+        Assistant Professor
+        <br>
+
+        Department of Economics,
+        Rutgers University
+        <br>
+
         <a href="mailto:ce265@economics.rutgers.edu">
           ce265@economics.rutgers.edu
         </a>
+
       </div>
 
     </div>
@@ -1593,6 +1926,7 @@
   </div>
 
 </section>
+
 
 
 <!-- FOOTER -->
@@ -1609,11 +1943,12 @@
     New Brunswick, NJ
   </p>
 
-  <p style="margin-top:4px;">
+  <p style="margin-top: 4px;">
     Last updated: September 2026
   </p>
 
 </footer>
+
 
 
 <!-- JAVASCRIPT -->
@@ -1635,28 +1970,36 @@
       id = "home";
     }
 
+
     document
       .querySelectorAll("section")
       .forEach(section => {
+
         section.classList.remove("active");
+
       });
 
 
     const targetSection =
       document.getElementById(id);
 
+
     if (targetSection) {
+
       targetSection.classList.add("active");
+
     }
 
 
     document
       .querySelectorAll(".nav-links a")
       .forEach(link => {
+
         link.classList.toggle(
           "active",
           link.dataset.sec === id
         );
+
       });
 
 
@@ -1667,7 +2010,10 @@
 
     document
       .getElementById("burger")
-      .setAttribute("aria-expanded", "false");
+      .setAttribute(
+        "aria-expanded",
+        "false"
+      );
 
 
     window.scrollTo({
@@ -1685,10 +2031,12 @@
         .replace("#", "")
         .trim();
 
+
     const id =
       validSections.includes(hash)
         ? hash
         : "home";
+
 
     showSection(id);
 
@@ -1700,20 +2048,25 @@
     const paper =
       button.closest(".paper");
 
+
     const abstract =
       paper.querySelector(".paper-abstract");
+
 
     if (!abstract) {
       return;
     }
 
+
     const open =
       abstract.classList.toggle("open");
+
 
     button.textContent =
       open
         ? "Abstract ↑"
         : "Abstract ↓";
+
 
     button.setAttribute(
       "aria-expanded",
@@ -1730,8 +2083,10 @@
       const navLinks =
         document.getElementById("navLinks");
 
+
       const open =
         navLinks.classList.toggle("open");
+
 
       document
         .getElementById("burger")
@@ -1756,5 +2111,7 @@
 
 </script>
 
+
 </body>
+
 </html>
